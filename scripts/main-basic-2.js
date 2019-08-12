@@ -12,6 +12,7 @@ keys.addEventListener('click', (e) => {
     const previousKeyType = calculator.dataset.previousKeyType; // << THIS IS CUSTOM VALUE
     if(e.target.matches('button')) { // START IF MATCHES THE BUTTON
         let key = e.target
+        console.log(key);
         // Remove .is-depressed class from all keys if pressed
         Array.from(key.parentNode.children).forEach((k) => k.classList.remove('is-depressed'))
 
@@ -22,7 +23,6 @@ keys.addEventListener('click', (e) => {
 
         // dataset is found in "data-[attibute]", check index.html
         let action = key.dataset.action;
-        let numberKey = !action;
 
         // If the key has a data-action that is either add, subtract, multiply or divide, the key is 'operator'.
         if( action === 'add' ||
@@ -32,9 +32,10 @@ keys.addEventListener('click', (e) => {
           ) {
               console.log(`You press the "${action.toUpperCase()}" operator button`)
               // set the variable beforehand
-              const firstValue = calculator.dataset.firstValue;
-              const operator = calculator.dataset.operator;
-              const secondValue = displayedNum;
+              const firstValue = calculator.dataset.firstValue; // Setting CUSTOM VALUE
+              const operator = calculator.dataset.operator;     // Setting CUSTOM VALUE
+              const secondValue = displayedNum;                 // Setting CUSTOM VALUE
+
               // Note: It's sufficient to check for firstValue and operator because secondValue always exists
               if(firstValue && operator && previousKeyType !== 'operator' && previousKeyType !== 'operate') {
                   const operateValue = operate(firstValue, operator, secondValue);
@@ -51,7 +52,7 @@ keys.addEventListener('click', (e) => {
             //   calculator.dataset.firstValue = displayedNum;    // << CUSTOM VALUE
               // add "custom" attribute
               calculator.dataset.previousKeyType = 'operator'; // << CUSTOM VALUE
-              calculator.dataset.operator = action             // << CUSTOM VALUE, scanning action string above
+              calculator.dataset.operator = action;             // << CUSTOM VALUE, (key.dataset.action)
             //   display.textContent = 0;
           } 
 
@@ -95,6 +96,7 @@ keys.addEventListener('click', (e) => {
               calculator.dataset.previousKeyType = 'clear'
           } 
           
+          let numberKey = !action;
           if(numberKey) {
               if(displayedNum === '0' || previousKeyType === 'operator' || previousKeyType === 'operate') {
                   display.textContent = keyContent;
@@ -105,6 +107,17 @@ keys.addEventListener('click', (e) => {
               console.log('number key!')
               calculator.dataset.previousKeyType = 'number'    // << CUSTOM VALUE
           }
+    }
+})
+
+
+document.addEventListener("keydown", (event) => {
+    let e = event.keyCode;
+    let key = event.key; 
+    if(e === 48 || e === 49 || e === 50 || e === 51 || e === 52 || e === 53 || e === 54 || e === 55 || e === 56 || e === 57) {
+        console.log(event.key)
+        console.log(isNaN(event.key))
+        display.textContent = key;
     }
 })
 
