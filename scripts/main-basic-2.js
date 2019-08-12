@@ -53,7 +53,6 @@ keys.addEventListener('click', (e) => {
               // add "custom" attribute
               calculator.dataset.previousKeyType = 'operator'; // << CUSTOM VALUE
               calculator.dataset.operator = action;             // << CUSTOM VALUE, (key.dataset.action)
-            //   display.textContent = 0;
           } 
 
           if(action === 'decimal') {
@@ -114,10 +113,19 @@ keys.addEventListener('click', (e) => {
 document.addEventListener("keydown", (event) => {
     let e = event.keyCode;
     let key = event.key; 
+    let displayedNum = display.textContent;
+    const previousKeyType = calculator.dataset.previousKeyType; // << THIS IS CUSTOM VALUE
+
     if(e === 48 || e === 49 || e === 50 || e === 51 || e === 52 || e === 53 || e === 54 || e === 55 || e === 56 || e === 57) {
-        console.log(event.key)
-        console.log(isNaN(event.key))
-        display.textContent = key;
+        if(displayedNum === '0' || displayedNum === 0 || calculator.previousKeyType === 'operator' || calculator.previousKeyType === 'operate'){
+            console.log(event.key)
+            console.log(isNaN(event.key))
+            display.textContent = key;
+            
+        } else {
+            display.textContent = displayedNum + key
+        }
+        calculator.dataset.previousKeyType = 'number'
     }
 })
 

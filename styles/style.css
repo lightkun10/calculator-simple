@@ -3,3 +3,10 @@
     padding: 0 0.7rem;
     font-size: 1.2rem;
 }
+
+body {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
