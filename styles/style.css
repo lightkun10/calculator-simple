@@ -1,12 +1,59 @@
 .is-depressed {
     background-color: coral;
-    padding: 0 0.7rem;
-    font-size: 1.2rem;
 }
 
 body {
-    height: 100vh;
+    height: 70vh;
     justify-content: center;
     align-items: center;
+    display: flex;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+}
+
+.calculator {
+    border: 0.8rem solid burlywood;
+    border-radius: 0.5rem;
+}
+
+.calculator .calculator-display {
+    border: 0.2rem solid #999;
+    /* margin-bottom: 0.1rem; */
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.calculator .calculator_keys {
     display: grid;
+    grid-template-columns: 60px 60px 60px 60px;
+    grid-template-rows: 40px 40px 40px 40px 40px;
+    grid-gap: 0.17rem;
+}
+
+.calculator p.display-name {
+    padding: 0.1rem 0.2rem;
+    text-align: end;
+    margin: 1px;
+    background: chocolate;
+}
+
+button {
+    margin-top: 0.1rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    border: none;
+}
+
+button:hover {
+    background-color: burlywood;
+}
+
+button.key--equal {
+    margin-top: -0.1rem;
+    width: 15.6rem;
+    font-size: 1rem;
+}
+
+button.key--equal:hover {
+    background-color: darksalmon;
 }

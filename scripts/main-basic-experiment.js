@@ -128,6 +128,8 @@ document.addEventListener("keydown", (event) => {
             display.textContent = displayedNum + key
         }
     }
+
+    
 })
 
 const operate = (x, operator, y) => {
