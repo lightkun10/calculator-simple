@@ -48,6 +48,10 @@ button:hover {
     background-color: burlywood;
 }
 
+.calculator .calculator_keys button.key--operator:hover {
+    background-color: darksalmon;
+}
+
 button.key--equal {
     margin-top: -0.1rem;
     width: 15.6rem;
